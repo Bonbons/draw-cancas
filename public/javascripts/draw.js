@@ -1,4 +1,4 @@
-const canvas = new fabric.Canvas('canvas', { width: 640, height: 360 });
+const canvas = new fabric.Canvas('canvas', { width: 1024, height: 1024 });
 
 // Clear canvas - Delete shapes
 
@@ -111,6 +111,61 @@ document.getElementById('triangle').addEventListener('click', () => {
     left: 100,
     top: 100
   }));
+});
+
+document.getElementById('download').addEventListener('click', () => {
+  // Contenu du fichier texte
+  var texte = JSON.stringify(canvas.toJSON());
+
+  // Création d'un objet Blob avec le texte
+  var blob = new Blob([texte], { type: "text/plain" });
+
+  // Création d'une URL pour le Blob
+  var url = URL.createObjectURL(blob);
+
+  // Création d'un élément <a> pour le téléchargement
+  var a = document.createElement("a");
+  a.href = url;
+  a.download = "objects.json";
+
+  // Ajout de l'élément <a> au corps du document
+  document.body.appendChild(a);
+
+  // Clic sur l'élément <a> pour déclencher le téléchargement
+  a.click();
+
+  // Suppression de l'élément <a> du corps du document
+  document.body.removeChild(a);
+
+  // Révocation de l'URL pour libérer des ressources
+  URL.revokeObjectURL(url);
+
+});
+
+document.getElementById('upload').addEventListener('click', () => {
+  // Créer un élément d'entrée de fichier
+  const input = document.createElement('input');
+  input.type = 'file';
+
+  input.onchange = e => { 
+    const file = e.target.files[0]; 
+
+     // setting up the reader
+     const reader = new FileReader();
+     reader.readAsText(file); // this is reading as data url
+  
+     // here we tell the reader what to do when it's done reading...
+     reader.onload = readerEvent => {
+        const content = readerEvent.target.result; // this is the content!
+        const json = JSON.parse(content);
+        canvas.loadFromJSON(json, () => {
+          canvas.renderAll();
+        });
+      }
+  }
+  
+  input.click();
+  
 });
 
 feather.replace();

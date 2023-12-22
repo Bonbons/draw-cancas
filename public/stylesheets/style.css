@@ -3,20 +3,14 @@
   padding: 0;
   margin: 0;
 }
-/*
-body {
-  display: flex;
-  height: 100vh;
-  font-size: 14px;
-  background: #2c2f36;
-  color: white;
-  padding: 30px;
-}
-*/
 
 #wrapper { margin: auto; }
 #buildZone { display: flex; }
-
+#container-canvas { 
+  overflow: auto;
+  width: 800px;
+  height: 400px;
+}
 .canvas-container, #canvas { transition: all 0.2 ease-in-out; }
 
 #canvas {
