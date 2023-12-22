@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/*
+body {
+  display: flex;
+  height: 100vh;
+  font-size: 14px;
+  background: #2c2f36;
+  color: white;
+  padding: 30px;
+}
+*/
+
+#wrapper { margin: auto; }
+#buildZone { display: flex; }
+
+.canvas-container, #canvas { transition: all 0.2 ease-in-out; }
+
+#canvas {
+  background: #2c2f36;
+  border-radius: 5px;
+}
+
+#controls {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  
+  span {
+    background: #4881b8;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+    border-radius: 100%;
+    transition: all 0.2s ease-in-out;
+    margin: 5px 0;
+    
+    &:hover {
+      background: lighten(#4881b8, 8%);
+      cursor: pointer;
+    }
+  }
+  
+  #clear {
+    background: #e54f6b;
+    margin-top: auto;
+    &:hover { background: lighten(#e54f6b, 8%); }
+  }
+}
+
+
+#styleZone {
+  display: flex;
+  margin-top: 20px;
+  
+  span {
+    width: 60px;
+    height: 30px;
+    border-radius: 3px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid transparent;
+    
+    &.isSelected i {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    &:hover, &.isSelected {
+      cursor: pointer;
+      border-color: white;
+    }
+  }
+  
+  i {
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(.56, .35, 0, 1.7);
+    transform: scale(0.6);
+  }
+}

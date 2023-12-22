@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  div(class='grid')
+    div(class='col')
+      h1= title
+      p Welcome to #{title}
+  div(id='wrapper')
+    div(id='buildZone')
+      canvas(id='canvas')
+      div(id='controls')
+        span(id='square') 
+          i(data-feather='square')
+        span(id='circle')
+          i(data-feather='circle')
+        span(id='triangle')
+          i(data-feather='triangle')
+        span(id='clear')
+          i(data-feather='trash')
+    div(id='styleZone')
+  
+  script(type='text/javascript',src='/javascripts/draw.js')
